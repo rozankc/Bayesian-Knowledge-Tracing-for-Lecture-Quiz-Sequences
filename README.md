@@ -31,7 +31,8 @@ The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperf
 📌RQ3 Can lecture-quiz sequences improve the predictive accuracy of BKT models compared to quiz-only models?
 
 #  Workflow
-![BKT Workflow](images/WORKFLOW_BKT.jpeg)
+![BKT Workflow](Images/WORKFLOW_BKT.jpeg)
+</p>
   <em>Figure 1 — End-to-end pipeline: from raw Coursera data to BKT knowledge state predictions</em>
 </p>
 The pipeline follows five stages:
