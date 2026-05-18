@@ -17,7 +17,7 @@ Modeling Knowledge Progression in MOOCs
 Massive Open Online Courses (MOOCs) have transformed scalable education, yet accurately tracking student knowledge remains a challenge. Traditional Bayesian Knowledge Tracing (BKT) models rely solely on quiz results — ignoring whether students engaged with lecture content at all.
 This project addresses that gap by building a Lecture-Quiz BKT model that incorporates:
 
-✅ Whether a student completed the lecture before attempting the quiz
+✅ Whether a student completed the lecture before attempting the quiz </p>
 ✅ The time gap (in minutes) between lecture completion and quiz submission
 
 We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+ lecture–quiz records from a Coursera MOOC.
@@ -26,9 +26,9 @@ We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+
 The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperforming the Quiz-Only model (AUC: 0.9370 | Log-Loss: 0.0272).
 
 # Research Questions
-📌RQ1 What is the effect of lecture completion on initial knowledge states p(Know₀) across different learner profiles?
-📌RQ2 How do different time intervals between lecture completion and quiz attempts impact the learning rate p(Learn)?
-📌RQ3 Can lecture-quiz sequences improve the predictive accuracy of BKT models compared to quiz-only models?
+📌RQ1 What is the effect of lecture completion on initial knowledge states p(Know₀) across different learner profiles? </p>
+📌RQ2 How do different time intervals between lecture completion and quiz attempts impact the learning rate p(Learn)? </p>
+📌RQ3 Can lecture-quiz sequences improve the predictive accuracy of BKT models compared to quiz-only models? </p>
 
 #  Workflow
 ![BKT Workflow](Images/WORKFLOW_BKT.jpeg)
