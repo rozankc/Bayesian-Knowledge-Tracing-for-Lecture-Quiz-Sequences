@@ -22,8 +22,7 @@ This project addresses that gap by building a Lecture-Quiz BKT model that incorp
 
 We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+ lecture–quiz records from a Coursera MOOC.
 
-# Key Result: 
-The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperforming the Quiz-Only model (AUC: 0.9370 | Log-Loss: 0.0272).
+> Key Finding: The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperforming the Quiz-Only model (AUC: 0.9370 | Log-Loss: 0.0272).
 
 # Research Questions
 📌RQ1 What is the effect of lecture completion on initial knowledge states p(Know₀) across different learner profiles? </p>
@@ -82,12 +81,12 @@ The dataset `final_dataset.csv` is derived from Coursera activity logs and conta
 
 | Model | Input Features |
 |-------|----------------|
-| 📘 **Lecture-Quiz Model** | Quiz outcome + lecture completion status + time gap |
-| 📋 **Quiz-Only Model** | Quiz outcome only (baseline) |
+| **Lecture-Quiz Model** | Quiz outcome + lecture completion status + time gap |
+| **Quiz-Only Model** | Quiz outcome only (baseline) |
 
 > Both models were implemented using the **pyBKT** library with `seed=42` and `num_fits=1`.
 
-# 📈 Results & Findings
+# Results & Findings
 **RQ1 — Lecture Completion vs. Initial Knowledge p(Know₀)**
 <p align="center">
   <img src="Images/Picture1.png" alt="RQ1 - Initial Knowledge States" width="700"/>
