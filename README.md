@@ -34,7 +34,9 @@ We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+
 </p>
   <em>Figure 1 — End-to-end pipeline: from raw Coursera data to BKT knowledge state predictions</em>
 </p>
-The pipeline follows five stages:</p>
+
+*The pipeline follows five stages:*
+</p>
 - Data Input: Raw Coursera logs: student IDs, lecture metadata, timestamps, quiz grades
 - Feature Engineering: Derives lecture completion status, time gap, and binary quiz outcome
 - Dataset Creation: Reshapes data into pyBKT-compatible format (student_id, skill_name, correct, time_gap)
