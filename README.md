@@ -36,8 +36,24 @@ The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperf
   <em>Figure 1 — End-to-end pipeline: from raw Coursera data to BKT knowledge state predictions</em>
 </p>
 The pipeline follows five stages:
-Raw Coursera Data  ──►  Feature Engineering  ──►  Structured Dataset
-                                                          │
-                                              pyBKT Model Training
-                                                          │
-                                       Knowledge State Predictions & Evaluation
+📌Data Input — Raw Coursera logs: student IDs, lecture metadata, timestamps, quiz grades
+📌Feature Engineering — Derives lecture completion status, time gap, and binary quiz outcome
+📌Dataset Creation — Reshapes data into pyBKT-compatible format (student_id, skill_name, correct, time_gap)
+📌BKT Model Layer — Fits p(Know₀), p(Learn), p(Guess), p(Slip) using pyBKT
+📌Output — Predicted knowledge states across quiz attempts
+
+## 📊 Dataset
+
+The dataset `final_dataset.csv` is derived from Coursera activity logs and contains **6,000+ lecture–quiz interaction records**.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `Student ID` | String | Anonymized unique student identifier |
+| `Lecture ID` | String | Unique identifier for each lecture |
+| `Lecture Completed` | Yes / No | Whether the lecture was completed before the quiz |
+| `Lecture Time` | Timestamp | Date and time of lecture completion |
+| `Quiz ID` | String | Unique identifier for each quiz (used as skill name) |
+| `Quiz Correct (1)/Incorrect (0)` | Binary | Quiz outcome: 1 = correct, 0 = incorrect |
+| `Quiz Time` | Timestamp | Date and time of quiz attempt |
+| `Time Gap (mins)` | Integer | Minutes elapsed between lecture and quiz |
+
