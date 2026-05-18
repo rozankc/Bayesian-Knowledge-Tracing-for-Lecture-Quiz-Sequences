@@ -100,7 +100,7 @@ Rogers and Feng (2024) noted that students with multiple quiz attempts tend to b
 
 <!-- Add your workflow diagram here -->
 <p align="center">
-  <img src="images/workflow.png" alt="BKT Modeling Workflow" width="750"/>
+  <img src="Images/WORKFLOW_BKT.jpeg" alt="BKT Modeling Workflow" width="750"/>
   <br/>
   <em>Figure 1 — Workflow for BKT Modeling</em>
 </p>
@@ -205,9 +205,8 @@ Both models were implemented using **pyBKT** with `seed=42` and `num_fits=1`, es
 
 ### RQ1 — Effect of Lecture Completion on p(Know₀)
 
-<!-- Add your RQ1 bar chart here -->
 <p align="center">
-  <img src="images/rq1_initial_knowledge.png" alt="RQ1 - Initial Knowledge States" width="700"/>
+  <img src="Images/Picture1.png" alt="RQ1 - Initial Knowledge States" width="700"/>
   <br/>
   <em>Figure 1 — Initial Knowledge States p(Know₀) by Lecture Completion across Quiz Topics</em>
 </p>
@@ -236,9 +235,8 @@ Both models were implemented using **pyBKT** with `seed=42` and `num_fits=1`, es
 
 ### RQ2 — Effect of Time Gap on p(Learn)
 
-<!-- Add your RQ2 line graph here -->
 <p align="center">
-  <img src="images/rq2_learning_rate.png" alt="RQ2 - Learning Rate by Time Interval" width="700"/>
+  <img src="Images/Picture2.png" alt="RQ2 - Learning Rate by Time Interval" width="700"/>
   <br/>
   <em>Figure 2 — Learning Rate p(Learn) across Time Intervals Between Lecture and Quiz</em>
 </p>
@@ -254,9 +252,8 @@ Students were grouped by the delay between lecture completion and quiz attempt u
 
 ### RQ3 — Predictive Accuracy: Lecture-Quiz vs. Quiz-Only
 
-<!-- Add your RQ3 comparison chart here -->
 <p align="center">
-  <img src="images/rq3_model_comparison.png" alt="RQ3 - Model Comparison" width="700"/>
+  <img src="Images/Picture3.png" alt="RQ3 - Model Comparison" width="700"/>
   <br/>
   <em>Figure 3 — Comparison of Predictive Accuracy: Lecture-Quiz Model vs. Quiz-Only Model</em>
 </p>
@@ -309,12 +306,6 @@ This study exposes the various learning behaviors that directly contribute to a 
 - [ ] Explore **Deep Knowledge Tracing (DKT)** and **Relation-Aware Knowledge Tracing (RKT)**
 - [ ] Extend the framework to **K–12 education** and **corporate training** environments
 - [ ] Evaluate generalizability across **multiple MOOC platforms and subject domains**
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to **Fengjiao Tu** for valuable assistance with Research Question 3.
 
 ---
 
