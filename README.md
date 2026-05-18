@@ -138,5 +138,7 @@ The Lecture-Quiz model outperformed the baseline on both metrics — better clas
 - Evaluate generalizability across multiple MOOC platforms
 
 <div align="center">
-  <sub>Built with ❤️ using pyBKT and Python for INFO 5731: Computational Methods for Information Systems- UNT </sub>
+  <sub>Built with ❤️ using pyBKT and Python for INFO 5731: Computational Methods for Information Systems| University of North Texas</sub>
+</div>
+ </sub>
 </div>
