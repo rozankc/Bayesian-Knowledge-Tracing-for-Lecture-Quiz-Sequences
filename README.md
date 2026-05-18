@@ -123,11 +123,11 @@ MetricQuiz-Only ModelLecture-Quiz ModelImprovementAUC ↑0.93700.9640+2.7%Log-Lo
 The Lecture-Quiz model outperformed the baseline on both metrics — better classification accuracy and more confident predictions.
 
 # ⚠️ Limitations
-- Quiz outcomes are binarized (correct/incorrect) — partial knowledge cannot be captured</p>
-- Quiz IDs used as skill proxies may represent overlapping concepts</p>
-- BKT parameters are constant across all learners — no individualization</p>
-- Behavioral signals limited to lecture completion and quiz outcomes; video replays, forum activity, and watch duration were not included</p>
-- Results from a single MOOC platform — generalizability to other platforms is untested</p>
+- Quiz outcomes are binarized (correct/incorrect) — partial knowledge cannot be captured
+- Quiz IDs used as skill proxies may represent overlapping concepts
+- BKT parameters are constant across all learners — no individualization
+- Behavioral signals limited to lecture completion and quiz outcomes; video replays, forum activity, and watch duration were not included
+- Results from a single MOOC platform — generalizability to other platforms is untested
 
 # Future Work
 - Explore Deep Knowledge Tracing (DKT) and Relation-Aware Knowledge Tracing (RKT)
