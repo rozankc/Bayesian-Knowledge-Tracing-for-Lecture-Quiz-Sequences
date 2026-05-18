@@ -35,15 +35,14 @@ The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperf
 </p>
   <em>Figure 1 — End-to-end pipeline: from raw Coursera data to BKT knowledge state predictions</em>
 </p>
-The pipeline follows five stages:
-📌Data Input — Raw Coursera logs: student IDs, lecture metadata, timestamps, quiz grades
-📌Feature Engineering — Derives lecture completion status, time gap, and binary quiz outcome
-📌Dataset Creation — Reshapes data into pyBKT-compatible format (student_id, skill_name, correct, time_gap)
-📌BKT Model Layer — Fits p(Know₀), p(Learn), p(Guess), p(Slip) using pyBKT
-📌Output — Predicted knowledge states across quiz attempts
+The pipeline follows five stages:</p>
+- Data Input — Raw Coursera logs: student IDs, lecture metadata, timestamps, quiz grades</p>
+- Feature Engineering — Derives lecture completion status, time gap, and binary quiz outcome</p>
+- Dataset Creation — Reshapes data into pyBKT-compatible format (student_id, skill_name, correct, time_gap)</p>
+- BKT Model Layer — Fits p(Know₀), p(Learn), p(Guess), p(Slip) using pyBKT</p>
+- Output — Predicted knowledge states across quiz attempts</p>
 
 ## 📊 Dataset
-
 The dataset `final_dataset.csv` is derived from Coursera activity logs and contains **6,000+ lecture–quiz interaction records**.
 
 | Column | Type | Description |
@@ -57,3 +56,87 @@ The dataset `final_dataset.csv` is derived from Coursera activity logs and conta
 | `Quiz Time` | Timestamp | Date and time of quiz attempt |
 | `Time Gap (mins)` | Integer | Minutes elapsed between lecture and quiz |
 
+**Preprocessing rules applied:**
+
+| Rule | Detail |
+|------|--------|
+| Quiz correctness | score ≥ 90% of max → `1` (Correct), otherwise → `0` (Incorrect) |
+| Negative time gaps | Treated as lecture not completed |
+| Large time gaps | Gaps > 90 days removed as noise |
+| Time gap bins | `(0–30]` `(30–60]` `(60–120]` `(120–180]` `(180–240]` minutes |
+
+---
+
+## 🧠 Methodology
+
+### BKT Parameters Estimated
+
+| Parameter | Description |
+|-----------|-------------|
+| `p(Know₀)` | Initial probability that a student already knows the skill |
+| `p(Learn)` | Probability of transitioning from unknown → known after practice |
+| `p(Slip)` | Probability of answering incorrectly despite knowing |
+| `p(Guess)` | Probability of answering correctly without knowing |
+
+### Models Compared
+
+| Model | Input Features |
+|-------|----------------|
+| 📘 **Lecture-Quiz Model** | Quiz outcome + lecture completion status + time gap |
+| 📋 **Quiz-Only Model** | Quiz outcome only (baseline) |
+
+> Both models were implemented using the **pyBKT** library with `seed=42` and `num_fits=1`.
+
+# 📈 Results & Findings
+**RQ1 — Lecture Completion vs. Initial Knowledge p(Know₀)**
+<p align="center">
+  <img src="Images/Picture1.png" alt="RQ1 - Initial Knowledge States" width="700"/>
+  <br/>
+  <em>Figure 2 — Initial Knowledge States p(Know₀) by Lecture Completion across Quiz Topics</em>
+</p>
+
+Students who completed lectures had significantly higher initial knowledge states
+pjoH6 (Key Concept Quiz) — highest p(Know₀) > 0.9
+U1Uhm (Aging Onto The Street) — lowest p(Know₀) < 0.2
+Confirms that lecture engagement builds a stronger knowledge foundation
+
+
+**RQ2 — Time Gap vs. Learning Rate p(Learn)**
+<p align="center">
+  <img src="Images/Picture2.png" alt="RQ2 - Learning Rate by Time Interval" width="700"/>
+  <br/>
+  <em>Figure 3 — Learning Rate p(Learn) across Time Intervals Between Lecture and Quiz</em>
+</p>
+
+Students who waited > 60 minutes after a lecture before taking the quiz showed higher learning rates
+p(Learn) peaked at 1.0 in the 60–120 minute interval
+Students who rushed the quiz (< 60 mins) showed noticeably lower retention
+
+
+**RQ3 — Predictive Accuracy: Lecture-Quiz vs. Quiz-Only**
+<p align="center">
+  <img src="Images/Picture3.png" alt="RQ3 - Model Comparison" width="700"/>
+  <br/>
+  <em>Figure 4 — AUC and Log-Loss Comparison: Lecture-Quiz Model vs. Quiz-Only Model</em>
+</p>
+MetricQuiz-Only ModelLecture-Quiz ModelImprovementAUC ↑0.93700.9640+2.7%Log-Loss ↓0.02720.0156−42.6%
+The Lecture-Quiz model outperformed the baseline on both metrics — better classification accuracy and more confident predictions.
+
+# ⚠️ Limitations
+- Quiz outcomes are binarized (correct/incorrect) — partial knowledge cannot be captured</p>
+- Quiz IDs used as skill proxies may represent overlapping concepts</p>
+- BKT parameters are constant across all learners — no individualization</p>
+- Behavioral signals limited to lecture completion and quiz outcomes; video replays, forum activity, and watch duration were not included</p>
+- Results from a single MOOC platform — generalizability to other platforms is untested</p>
+
+# Future Work
+- Explore Deep Knowledge Tracing (DKT) and Relation-Aware Knowledge Tracing (RKT)
+- Incorporate richer signals: video rewind events, lecture watch duration, forum participation
+- Adopt Q-matrix mapping for more accurate skill-to-quiz alignment
+- Apply partial credit scoring to better capture nuanced knowledge states
+- Extend the framework to K–12 education and corporate training datasets
+- Evaluate generalizability across multiple MOOC platforms
+
+<div align="center">
+  <sub>Built with ❤️ using pyBKT and Python</sub>
+</div>
