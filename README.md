@@ -1,8 +1,5 @@
 # Bayesian-Knowledge-Tracing-for-Lecture-Quiz-Sequences
 Modeling Knowledge Progression in MOOCs
-# Overview
-This project extends classical Bayesian Knowledge Tracing (BKT) by incorporating lecture engagement and time-gap data into the knowledge estimation pipeline — two behavioral signals that traditional quiz-only models ignore.
-Using a curated dataset of over 6,000 lecture–quiz records from a Coursera MOOC, we compare a Lecture-Quiz BKT model against a Quiz-Only BKT model to evaluate how lecture completion and the time interval between lectures and quizzes affect knowledge state prediction.
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
@@ -16,18 +13,33 @@ Using a curated dataset of over 6,000 lecture–quiz records from a Coursera MOO
 <!-- <img src="images/banner.png" alt="Project Banner" width="800"/> -->
 </div>
 
-# Key Finding: 
+# Project Overview
+Massive Open Online Courses (MOOCs) have transformed scalable education, yet accurately tracking student knowledge remains a challenge. Traditional Bayesian Knowledge Tracing (BKT) models rely solely on quiz results — ignoring whether students engaged with lecture content at all.
+This project addresses that gap by building a Lecture-Quiz BKT model that incorporates:
+
+✅ Whether a student completed the lecture before attempting the quiz
+✅ The time gap (in minutes) between lecture completion and quiz submission
+
+We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+ lecture–quiz records from a Coursera MOOC.
+
+# Key Result: 
 The Lecture-Quiz model achieved an AUC of 0.9640 and Log-Loss of 0.0156, outperforming the Quiz-Only model (AUC: 0.9370 | Log-Loss: 0.0272).
 
-## Research Questions
-#RQ1What is the effect of lecture completion on initial knowledge states p(Know₀) across different learner profiles?
-RQ2How do different time intervals between lecture completion and quiz attempts impact the learning rate p(Learn)?
-RQ3Can lecture-quiz sequences improve the predictive accuracy of BKT models compared to quiz-only models?
+# Research Questions
+📌RQ1 What is the effect of lecture completion on initial knowledge states p(Know₀) across different learner profiles?
+📌RQ2 How do different time intervals between lecture completion and quiz attempts impact the learning rate p(Learn)?
+📌RQ3 Can lecture-quiz sequences improve the predictive accuracy of BKT models compared to quiz-only models?
 
-## Methodology
-![BKT Workflow](images/WORKFLOW BKT.jpeg)
-RQ1 bar chart — p(Know₀) by quiz topic
-
-Dataset
-The dataset (final_dataset.csv) is derived from Coursera activity logs and contains 6,000+ lecture–quiz interaction records.
-ColumnDescriptionStudent IDAnonymized unique student identifierLecture IDUnique identifier for each lectureLecture CompletedWhether the lecture was completed (Yes/No)Lecture TimeTimestamp of lecture completionQuiz IDUnique identifier for each quizQuiz Correct (1)/Incorrect (0)Binary quiz outcome (1 = correct, 0 = incorrect)Quiz TimeTimestamp of quiz attemptTime Gap (mins)Minutes elapsed between lecture completion and quiz attempt
+#  Workflow
+(Images/WORKFLOW BKT.jpeg)
+<p align="center">
+  <img src="images/workflow.png" alt="BKT Model Workflow" width="750"/>
+  <br/>
+  <em>Figure 1 — End-to-end pipeline: from raw Coursera data to BKT knowledge state predictions</em>
+</p>
+The pipeline follows five stages:
+Raw Coursera Data  ──►  Feature Engineering  ──►  Structured Dataset
+                                                          │
+                                              pyBKT Model Training
+                                                          │
+                                       Knowledge State Predictions & Evaluation
