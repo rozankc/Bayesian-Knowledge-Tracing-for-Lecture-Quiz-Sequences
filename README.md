@@ -42,7 +42,7 @@ We compare this against a baseline Quiz-Only BKT model using a dataset of 6,000+
 * BKT Model Layer: Fits p(Know₀), p(Learn), p(Guess), p(Slip) using pyBKT
 * Output: Predicted knowledge states across quiz attempts
 
-## 📊 Dataset
+## Dataset
 The dataset `final_dataset.csv` is derived from Coursera activity logs and contains **6,000+ lecture–quiz interaction records**.
 
 | Column | Type | Description |
@@ -67,7 +67,7 @@ The dataset `final_dataset.csv` is derived from Coursera activity logs and conta
 
 ---
 
-## 🧠 Methodology
+## Methodology
 
 ### BKT Parameters Estimated
 
@@ -122,23 +122,9 @@ Students who rushed the quiz (< 60 mins) showed noticeably lower retention
 MetricQuiz-Only ModelLecture-Quiz ModelImprovementAUC ↑0.93700.9640+2.7%Log-Loss ↓0.02720.0156−42.6%
 The Lecture-Quiz model outperformed the baseline on both metrics — better classification accuracy and more confident predictions.
 
-# ⚠️ Limitations
-- Quiz outcomes are binarized (correct/incorrect) — partial knowledge cannot be captured
-- Quiz IDs used as skill proxies may represent overlapping concepts
-- BKT parameters are constant across all learners — no individualization
-- Behavioral signals limited to lecture completion and quiz outcomes; video replays, forum activity, and watch duration were not included
-- Results from a single MOOC platform — generalizability to other platforms is untested
-
-# Future Work
-- Explore Deep Knowledge Tracing (DKT) and Relation-Aware Knowledge Tracing (RKT)
-- Incorporate richer signals: video rewind events, lecture watch duration, forum participation
-- Adopt Q-matrix mapping for more accurate skill-to-quiz alignment
-- Apply partial credit scoring to better capture nuanced knowledge states
-- Extend the framework to K–12 education and corporate training datasets
-- Evaluate generalizability across multiple MOOC platforms
 
 <div align="center">
-  <sub>Built with ❤️ using pyBKT and Python for INFO 5731: Computational Methods for Information Systems| University of North Texas</sub>
+  <sub>Built with ❤️ using pyBKT and Python | INFO 5731: Computational Methods for Information Systems| University of North Texas</sub>
 </div>
  </sub>
 </div>
